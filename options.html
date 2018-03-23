@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Outlook Reminder Options</title>
+	<style>
+		body: { padding: 10px; }
+	</style>
+</head>
+
+<body>
+	OWA Url:
+	<input type="text" id="owaUrl">
+
+	<br/>
+	Calendar Id:
+	<input type="text" id="calendarId">
+
+	<br/>
+	Remind me about events (x) minutes before:
+	<input type="number" id="reminderTime">
+
+	<br/>
+	Give me one last reminder when the event starts:
+	<input type="checkbox" id="finalReminder">
+
+	<br/>
+	<div id="status"></div>
+	<button id="save">Save</button>
+
+	<script src="js/options.js"></script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+{
+   "author": [ {
+      "name": "Brian Lamb"
+   } ],
+   "background": {
+      "scripts": [ "js/background.js" ]
+   },
+   "description": "Enables calendar notification from any outlook OWA webapp",
+   "icons": {
+      "128": "icons/128.png"
+   },
+   "manifest_version": 2,
+   "minimum_chrome_version": "20",
+   "name": "Outlook Reminders",
+   "offline_enabled": false,
+   "permissions": [
+      "notifications",
+      "storage",
+      "http://*/",
+      "https://*/"
+   ],
+   "short_name": "Outlook Reminders",
+   "update_url": "https://clients2.google.com/service/update2/crx",
+   "homepage_url": "https://github.com/lambcode/outlook-reminders",
+   "version": "0.0.1",
+   "options_ui": {
+      "page": "options.html",
+      "chrome_style": true
+   }
+}
