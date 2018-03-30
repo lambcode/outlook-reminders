@@ -6,6 +6,7 @@ let finalReminder = true;
 
 
 let minuteInMilli = 1000 * 60;
+let dayInMilli = minuteInMilli * 60 * 24;
 let registeredNotifications = [];
 
 chrome.storage.sync.get({
@@ -27,15 +28,24 @@ function twoDigitFormat(num) {
 function registerNotification(item, millisBeforeShow) {
     let time = new Date(Date.parse(item.StartDate));
     let notificationConfig = {
+        debug: { millisBeforeShow: millisBeforeShow },
         subject: item.Subject,
         location: item.Location,
         time: base12Hours(time) + ":" + twoDigitFormat(time.getMinutes())
     };
 
-    return setTimeout(() => notify(notificationConfig), millisBeforeShow);
+    return setTimeout(() => {
+        notify(notificationConfig)
+    }, millisBeforeShow);
 }
 
 function reRegisterNotifications() {
+
+    let monthFromToday = new Date(Date.now() + (dayInMilli * 7));
+    let monthFromTodayString = monthFromToday.getFullYear()
+        + "-" + twoDigitFormat(monthFromToday.getMonth() + 1)
+        + "-" + twoDigitFormat(monthFromToday.getDate());
+
     let postData = {
         "__type": "GetRemindersJsonRequest:#Exchange",
         "Header": {
@@ -46,7 +56,7 @@ function reRegisterNotifications() {
                 "TimeZoneDefinition": {"__type": "TimeZoneDefinitionType:#Exchange", "Id": timezoneId}
             }
         },
-        "Body": {"__type": "GetRemindersRequest:#Exchange", "EndTime": "2018-04-08T19:09:29", "MaxItems": 0}
+        "Body": {"__type": "GetRemindersRequest:#Exchange", "EndTime": monthFromTodayString + "T00:00:00", "MaxItems": 0}
     };
 
     return new Promise((resolve, reject) => {
