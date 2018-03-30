@@ -1,2 +1,8 @@
+.PHONY: all clean
+
 all:
-	zip -r PinnedTabRedirectPreventer.zip *
+	zip -r outlook-reminders.zip *
+
+clean:
+	rm outlook-reminders.zip
+

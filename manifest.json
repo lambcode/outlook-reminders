@@ -5,15 +5,19 @@
    "background": {
       "scripts": [ "js/background.js" ]
    },
-   "description": "Enables calendar notification from any outlook OWA webapp",
+   "description": "Enables calendar notification from any outlook OWA webapp. Known to work with exchange 2016",
    "icons": {
       "128": "icons/128.png"
+   },
+   "browser_action": {
+      "default_icon": "icons/128.png"
    },
    "manifest_version": 2,
    "minimum_chrome_version": "20",
    "name": "Outlook Reminders",
    "offline_enabled": false,
    "permissions": [
+      "cookies",
       "notifications",
       "storage",
       "http://*/",
@@ -22,7 +26,7 @@
    "short_name": "Outlook Reminders",
    "update_url": "https://clients2.google.com/service/update2/crx",
    "homepage_url": "https://github.com/lambcode/outlook-reminders",
-   "version": "0.0.1",
+   "version": "0.0.2",
    "options_ui": {
       "page": "options.html",
       "chrome_style": true

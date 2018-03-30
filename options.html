@@ -3,27 +3,41 @@
 <head>
 	<title>Outlook Reminder Options</title>
 	<style>
-		body: { padding: 10px; }
+		body {
+			padding: 0 10px 10px 10px;
+			width: 500px;
+		}
+
+		p {
+			margin-bottom: 3px;
+		}
+
+		input[type="text"] {
+			margin-bottom: 10px;
+			width: 300px;
+		}
+
+		#finalReminderDiv {
+			margin-top: 12px;
+			margin-bottom: 22px;
+		}
+
 	</style>
+	<link rel="stylesheet" href="css/checkbox.css">
 </head>
 
 <body>
-	OWA Url:
+	<p>OWA Url</p>
 	<input type="text" id="owaUrl">
 
-	<br/>
-	Calendar Id:
-	<input type="text" id="calendarId">
+	<p>Timezone Id (see <a href="https://stackoverflow.com/a/7908482">here</a> for values that will most likely work)</p>
+	<input type="text" id="timezoneId">
 
-	<br/>
-	Remind me about events (x) minutes before:
-	<input type="number" id="reminderTime">
+	<div id="finalReminderDiv">
+		<input type="checkbox" id="finalReminder">
+		<label for="finalReminder">Give me one last reminder when the event starts unless reminder has been dismissed</label>
+	</div>
 
-	<br/>
-	Give me one last reminder when the event starts:
-	<input type="checkbox" id="finalReminder">
-
-	<br/>
 	<div id="status"></div>
 	<button id="save">Save</button>
 

@@ -1,14 +1,12 @@
 // Saves options to chrome.storage.sync.
 function save_options() {
     var owaUrl = document.getElementById('owaUrl').value;
-    var calendarId = document.getElementById('calendarId').value;
-    var reminderTime = parseInt(document.getElementById('reminderTime').value);
+    var timezoneId = document.getElementById('timezoneId').value;
     var finalReminder = document.getElementById('finalReminder').checked;
 
     chrome.storage.sync.set({
         owaUrl: owaUrl,
-        calendarId: calendarId,
-        reminderTime: reminderTime,
+        timezoneId: timezoneId,
         finalReminder: finalReminder
     }, function() {
         // Update status to let user know options were saved.
@@ -17,6 +15,8 @@ function save_options() {
         setTimeout(function() {
             status.textContent = '';
         }, 750);
+
+        chrome.extension.getBackgroundPage().window.location.reload()
     });
 }
 
@@ -26,13 +26,11 @@ function restore_options() {
     // Use default value color = 'red' and likesColor = true.
     chrome.storage.sync.get({
         owaUrl: '',
-        calendarId: '',
-        reminderTime: 15,
+        timezoneId: '',
         finalReminder: true
     }, function(items) {
         document.getElementById('owaUrl').value = items.owaUrl;
-        document.getElementById('calendarId').value = items.calendarId;
-        document.getElementById('reminderTime').value = items.reminderTime;
+        document.getElementById('timezoneId').value = items.timezoneId;
         document.getElementById('finalReminder').checked = items.finalReminder;
     });
 }
