@@ -1,7 +1,10 @@
 {
-   "author": [ {
-      "name": "Brian Lamb"
-   } ],
+   "applications": {
+	   "gecko": {
+		   "id": "41588d5c-0958-44b2-a893-8ef4bce36f5c@example.org"
+	   }
+   },
+   "author": "Brian Lamb",
    "background": {
       "scripts": [ "js/background.js" ]
    },
@@ -15,7 +18,6 @@
    "manifest_version": 2,
    "minimum_chrome_version": "20",
    "name": "Outlook Reminders",
-   "offline_enabled": false,
    "permissions": [
       "cookies",
       "notifications",
@@ -24,7 +26,6 @@
       "https://*/"
    ],
    "short_name": "Outlook Reminders",
-   "update_url": "https://clients2.google.com/service/update2/crx",
    "homepage_url": "https://github.com/lambcode/outlook-reminders",
    "version": "0.0.2",
    "options_ui": {

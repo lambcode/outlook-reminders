@@ -109,8 +109,7 @@ function reRegisterNotifications() {
             type: "basic",
             iconUrl: "icons/128.png",
             title: "Calendar Error",
-            message: "Calendar Authentication Error. Are you logged in?",
-            requireInteraction: true
+            message: "Calendar Authentication Error. Are you logged in?"
         });
 
         return Promise.reject();
@@ -130,8 +129,7 @@ function notify(config) {
         iconUrl: "icons/128.png",
         title: "Event - " + config.subject,
         message: config.subject,
-        items: items,
-        requireInteraction: true
+        items: items
     });
 }
 
